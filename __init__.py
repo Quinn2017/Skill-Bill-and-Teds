@@ -78,12 +78,12 @@ class BillandTedSkill(MycroftSkill):
         self.load_data_files(dirname(__file__))
 
         # Create an array of the .mp3 files in the mp3 directory
-        for name in listdir(join(dirname(__file__), "mp3")):
+        for name in listdir(join(dirname(__file__), "MP3")):
             self.theFiles.append(name)
 
         # Randomly select one of the array of mp3 files to play and play it
         index = randrange(0, len(self.theFiles))
-        self.process = play_mp3(join(dirname(__file__), "mp3", self.theFiles[index]))
+        self.process = play_mp3(join(dirname(__file__), "MP3", self.theFiles[index]))
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
