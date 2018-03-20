@@ -1,18 +1,17 @@
-# An Inventory_Skill (Test)
-
-This skill is in testing phase. 
+# Skill-Bill-and-Teds
+A nostalgic return to the 80s classic 'Bill and Ted'.
 
 ## Synopsis:
-You can give command to create and add information to a Google Spreadsheet.
+Invoke the air guitar soundclip.
 
 ## CURRENT STATE:
-It's in the initial testing phase. 
+Initial testing phase. 
 
-## INSTALLATION:
-Not applicable
+## REQUIREMENTS
+No requirements. 
 
 ## USAGE:
-Not applicable
+Say "station" or "wild stalion"
 
 ## ISSUES / TODO:
-Not applicable
+No known issues. 

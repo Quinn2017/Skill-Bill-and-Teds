@@ -1,24 +1,98 @@
-import pygsheets
+# Copyright 2018 Mycroft AI, Inc.
+#
+# This file is part of Mycroft Core.
+#
+# Mycroft Core is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Mycroft Core is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Visit https://docs.mycroft.ai/skill.creation for more detailed information
+# on the structure of this skill and its containing folder, as well as
+# instructions for designing your own skill based on this template.
+#
+#
+#
+# Import statements: the list of outside modules you'll be using in your
+# skills, whether from other files in mycroft-core or from external libraries
+#
+# This skill is based off the skill-malibu-stacey by Kathie Reid
+
+
+from os import listdir
+from os.path import dirname, isfile, join
+from random import randrange
 
 from adapt.intent import IntentBuilder
-from mycroft.skills.core import MycroftSkill, intent_handler
+from mycroft.skills.core import MycroftSkill
+from mycroft.util.log import getLogger
+from mycroft.util import play_mp3
 
-gc = pygsheets.authorize(outh_file='client_id.json', outh_nonlocal=True)
-sh = gc.open('tonyquinn2018')
-wks = sh.sheet1
-wks.update_cell('A1','test')
-sh.share("charlesldumais@gmail.com")
 
-class InventorySkill(MycroftSkill):
+__author__ = 'Charles'
+
+# Logger: used for debug lines, like "LOGGER.debug(xyz)". These
+# statements will show up in the command line when running Mycroft.
+LOGGER = getLogger(__name__)
+
+# The logic of each skill is contained within its own class, which inherits
+# base methods from the MycroftSkill class with the syntax you can see below:
+# "class ____Skill(MycroftSkill)"
+class BillandTedtSkill(MycroftSkill):
+
+    # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(InventorySkill, self).__init__(name="InventorySkill")
+        super(BillandTedtSkill, self).__init__(name="BillandTedtSkill")
+        self.process = None
+        self.theFiles = []
 
-    def speak_inventory(self, update_cell):
-        self.speak()
+    # This method loads the files needed for the skill's functioning, and
+    # creates and registers each intent that the skill uses
+    def initialize(self):
+        self.load_data_files(dirname(__file__))
 
-    @intent_handler(IntentBuilder("InventoryIntent").require("InventoryKeyword"))
-    def handle_Inventory_intent(self, message):
-        self.speak("Yes, I have your Google Spreadsheet right here.", expect_response=True)
+        station_intent = IntentBuilder("StationIntent").\
+            require("StationKeyword").build()
+        self.register_intent(station_intent, self.handle_station_intent)
 
+        wild_stalion_intent = IntentBuilder("WildStalionIntent").\
+            require("WildStalionKeyword").build()
+        self.register_intent(station_intent, self.handle_station_intent)
+
+    # The "handle_xxxx_intent" functions define Mycroft's behavior when
+    # each of the skill's intents is triggered: in this case, he simply
+    # speaks a response. Note that the "speak_dialog" method doesn't
+    # actually speak the text it's passed--instead, that text is the filename
+    # of a file in the dialog folder, and Mycroft speaks its contents when
+    # the method is called.
+    def handle_station_intent(self, message):
+
+        self.load_data_files(dirname(__file__))
+
+        # Create an array of the .mp3 files in the mp3 directory
+        for name in listdir(join(dirname(__file__), "mp3")):
+            self.theFiles.append(name)
+
+        # Randomly select one of the array of mp3 files to play and play it
+        index = randrange(0, len(self.theFiles))
+        self.process = play_mp3(join(dirname(__file__), "mp3", self.theFiles[index]))
+
+    # The "stop" method defines what Mycroft does when told to stop during
+    # the skill's execution.
+    def stop(self):
+        if self.process and self.process.poll() is None:
+            self.process.terminate()
+            self.process.wait()
+
+# The "create_skill()" method is used to create an instance of the skill.
+# Note that it's outside the class itself.
 def create_skill():
-    return InventorySkill()
+    return BillandTedtSkill()
