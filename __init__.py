@@ -46,11 +46,11 @@ LOGGER = getLogger(__name__)
 # The logic of each skill is contained within its own class, which inherits
 # base methods from the MycroftSkill class with the syntax you can see below:
 # "class ____Skill(MycroftSkill)"
-class BillandTedtSkill(MycroftSkill):
+class BillandTedSkill(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(BillandTedtSkill, self).__init__(name="BillandTedtSkill")
+        super(BillandTedSkill, self).__init__(name="BillandTedSkill")
         self.process = None
         self.theFiles = []
 
@@ -95,4 +95,4 @@ class BillandTedtSkill(MycroftSkill):
 # The "create_skill()" method is used to create an instance of the skill.
 # Note that it's outside the class itself.
 def create_skill():
-    return BillandTedtSkill()
+    return BillandTedSkill()
