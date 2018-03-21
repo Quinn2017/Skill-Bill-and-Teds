@@ -65,7 +65,7 @@ class BillandTedSkill(MycroftSkill):
 
         wild_stallions_intent = IntentBuilder("WildStallionsIntent").\
             require("WildStallionsKeyword").build()
-        self.register_intent(wild_stallions_intent, self.handle_wild_stallions_intent)
+        self.register_intent(station_intent, self.handle_station_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -74,18 +74,6 @@ class BillandTedSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_station_intent(self, message):
-
-        self.load_data_files(dirname(__file__))
-
-        # Create an array of the .mp3 files in the mp3 directory
-        for name in listdir(join(dirname(__file__), "MP3")):
-            self.theFiles.append(name)
-
-        # Randomly select one of the array of mp3 files to play and play it
-        index = randrange(0, len(self.theFiles))
-        self.process = play_mp3(join(dirname(__file__), "MP3", self.theFiles[index]))
-
-    def handle_wild_stallions_intent(self, message):
 
         self.load_data_files(dirname(__file__))
 
