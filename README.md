@@ -15,3 +15,6 @@ Say "station" or "wild stallions" to invoke air guitar.
 
 ## ISSUES / TODO:
 No known problems. Need to add longer air guitar mp3. 
+
+## Credits
+https://github.com/KathyReid/skill-malibu-stacy
