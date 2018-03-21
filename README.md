@@ -1,11 +1,11 @@
 # Skill-Bill-and-Teds
-A nostalgic return to the 80s classic 'Bill and Ted' for Mycroft. 
+A nostalgic return to an 80s classic 'Bill and Ted'. (Mycroft Skill)
 
 ## Synopsis:
 The skill lets you invoke the  air guitar soundclip.
 
 ## CURRENT STATE:
-Works, but still in initial testing phase.
+Works, I think, but still in initial testing phase.
 
 ## REQUIREMENTS
 No requirements. 

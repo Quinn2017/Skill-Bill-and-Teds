@@ -74,6 +74,7 @@ class BillandTedSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_station_intent(self, message):
+        
         self.load_data_files(dirname(__file__))
 
         # Create an array of the .mp3 files in the mp3 directory
