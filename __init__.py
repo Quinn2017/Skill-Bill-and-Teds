@@ -18,14 +18,12 @@
 # Visit https://docs.mycroft.ai/skill.creation for more detailed information
 # on the structure of this skill and its containing folder, as well as
 # instructions for designing your own skill based on this template.
-#
-#
-#
+
+# This skill is based off the skill-malibu-stacey by Kathie Reid.
+
+
 # Import statements: the list of outside modules you'll be using in your
 # skills, whether from other files in mycroft-core or from external libraries
-#
-# This skill is based off the skill-malibu-stacey by Kathie Reid
-
 
 from os import listdir
 from os.path import dirname, isfile, join
@@ -65,7 +63,7 @@ class BillandTedSkill(MycroftSkill):
 
         stallion_intent = IntentBuilder("StallionIntent").\
             require("StallionKeyword").build()
-        self.register_intent(station_intent, self.handle_station_intent)
+        self.register_intent(stallion_intent, self.handle_station_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
