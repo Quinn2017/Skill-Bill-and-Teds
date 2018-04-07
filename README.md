@@ -11,8 +11,8 @@ No requirements.
 Say the iconic phrase "station" or "wild stallions" to invoke air guitar.
 
 ## ISSUES / TODO:
-Understand why the .dialog and self.process.wait() can't be inserted
-Add longer / different air guitar clips.
+- Understand why the .dialog and self.process.wait() can't be inserted.
+- Add longer / different air guitar clips.
 
 ## Credits
 https://github.com/KathyReid/skill-malibu-stacy
