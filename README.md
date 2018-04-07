@@ -1,18 +1,18 @@
 # Skill-Bill-and-Teds
-A nostalgic return to an 80s classic 'Bill and Ted'. A Mycroft skill that lets you invoke air guitar soundclip.
+A nostalgic return to an 80s classic 'Bill and Ted'. A Mycroft skill that lets you invoke air guitar soundclip in style. 
 
 ## CURRENT STATE:
-The skill Works.
+Initial phases. 
 
 ## REQUIREMENTS
 No requirements. 
 
 ## USAGE:
-Say "station" or "wild stallions" to invoke air guitar.
+Say the iconic phrase "station" or "wild stallions" to invoke air guitar.
 
 ## ISSUES / TODO:
-No known problems. 
-I just need to add longer / different air guitar clips.
+Understand why the .dialog and self.process.wait() can't be inserted
+Add longer / different air guitar clips.
 
 ## Credits
 https://github.com/KathyReid/skill-malibu-stacy

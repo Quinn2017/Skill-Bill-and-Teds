@@ -34,6 +34,7 @@ from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 from mycroft.util import play_mp3
 
+import time
 
 __author__ = 'Charles'
 
@@ -72,7 +73,8 @@ class BillandTedSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_station_intent(self, message):
-        
+        self.speak("station")
+        time.sleep(1)
         self.load_data_files(dirname(__file__))
 
         # Create an array of the .mp3 files in the mp3 directory
